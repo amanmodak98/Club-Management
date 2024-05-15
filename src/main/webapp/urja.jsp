@@ -728,7 +728,7 @@
         </div>
         <ul class="menu-items">
           <li><a href="#about">About</a></li>
-          <li><a href="student.html">Events</a></li>
+          <li><a href="student.jsp">Events</a></li>
           <li><a href="#contact-me">Contact</a></li>
         </ul>
       </div>

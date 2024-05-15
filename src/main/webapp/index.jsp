@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +75,7 @@
             background-color: grey;
         }
 
-        .container .navbar .right button {
+        .container .navbar .right form {
             margin: auto;
             align-items: center;
             justify-content: center;
@@ -86,6 +88,21 @@
             border-radius: 4px;
             border: none;
         }
+
+        .container .navbar .right form button {
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 400;
+            padding: 7px 17px;
+            background: #e50914;
+            cursor: pointer;
+            outline: none;
+            border-radius: 4px;
+            border: none;
+        }
+
 
         .container .navbar .right button a {
             text-decoration: none;
@@ -169,7 +186,7 @@
                     <option value="English">English</option>
                     <option value="Hindi">Hindi</option>
                 </select>
-                <button><a href="login.html">Sign In</a></button>
+               <form action="login"><button type="submit">LogIn</button></form>
             </div>
         </nav>
 
@@ -177,17 +194,18 @@
             <div class="content">
                 <h2>The first college in North India to be awarded</h2>
                 <h2><b>NAAC A++</b></h2>
-                <form action="#">
+                <form action="newsletter" method="post">
                     <h3>No. 1 in Uttarakhand, No. 5 in North India, and No. 49 in India</h3>
                     <h3>State-of-the-art educational infrastructure and vibrant campus life</h3>
                     <div class="email">
                         <input type="email" name="email" placeholder="Email address">
-                        <button><a href="login.html">Get Started ></a></button>
+                        <button type="submit">Get Started ></button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </body>
+
 
 </html>

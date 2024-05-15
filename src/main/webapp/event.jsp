@@ -215,19 +215,25 @@
     </style>
 </head>
 <body>
-    <h2>Add Event					</h2><a href="Logout">Logout</a>
+    <h2>Add Event</h2>
+    <form action="Logout">
+    <button type="submit" name="action">Logout</button>
+    </form>
     
-    <form action="AddEvent" method="post" class="testbox">
-        <div class="banner">
-        </div>
+     <form action="AddEvent" method="post" class="testbox">
+        <div class="banner"></div>
         <fieldset>
             <legend>Event Information</legend>
             <div class="columns">
                 <div class="item">
-        <label for="proposer_name">Proposer User I'd:<span>*</span></label>
-        <!-- Display the fetched proposer name here -->
-        <input type="text" id="proposer_name" name="proposer_name" value="<%= session.getAttribute("uname") %>" readonly>
-    </div>
+                    <label for="user_id">Proposer User ID:<span>*</span></label>
+                    <!-- Display the fetched proposer name here -->
+                    <input type="text" id="user_id" name="user_id" value="${sessionScope.uname}" readonly>
+                </div>
+                <div class="item">
+                    <label for="proposer_name">Proposer Name:<span>*</span></label>
+                    <input type="text" id="proposer_name" name="proposer_name" required>
+                </div>
                 <div class="item">
                     <label for="event_name">Event Name:<span>*</span></label>
                     <input type="text" id="event_name" name="event_name" required>
@@ -259,7 +265,6 @@
                 <div class="item">
                     <label for="from_time">From Time:<span>*</span></label>
                     <input type="time" id="from_time" name="from_time" required>
-
                 </div>
                 <div class="item">
                     <label for="to_time">To Time:<span>*</span></label>

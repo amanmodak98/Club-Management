@@ -1,39 +1,86 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Event Data</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
         h1 {
             text-align: center;
             color: #333;
         }
+
         table {
-            width: 80%;
+            width: 100%;
             border-collapse: collapse;
-            margin: 20px auto;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
         }
+
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            padding: 15px;
+            border-bottom: 1px solid #dee2e6;
             text-align: left;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
         }
+
         tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #f8f9fa;
         }
-        tr:hover {
-            background-color: #ddd;
+
+        .button-column button {
+            padding: 8px 16px;
+            margin-right: 5px;
+            border: none;
+            cursor: pointer;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .button-column button:hover {
+            background-color: #218838;
+        }
+
+        .approved {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .not-approved {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .button-column button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -60,35 +107,35 @@
             ResultSet rs = null;
 
             try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hackathon", "root", "root");
                 stmt = conn.createStatement();
                 rs = stmt.executeQuery("SELECT * FROM events");
 
                 while (rs.next()) {
         %>
-<tr>
-    <td><%= rs.getString("proposer_name") %></td>
-    <td><%= rs.getString("event_name") %></td>
-    <td><%= rs.getString("event_description") %></td>
-    <td><%= rs.getString("venue") %></td>
-    <td><%= rs.getString("event_date") %></td>
-    <td><%= rs.getString("from_time") %></td>
-    <td><%= rs.getString("to_time") %></td>
-    <td><%= rs.getInt("approved_by_faculty") == 0 ? "Not Approved" : "Approved" %></td>
-    <td><%= rs.getInt("approved_by_dean") == 0 ? "Not Approved" : "Approved" %></td>
-    <td><%= rs.getInt("approved_by_head_of_student_council") == 0 ? "Not Approved" : "Approved" %></td>
-    <td class="button-column">
-        <form action="your_page.jsp" method="post">
-            <input type="hidden" name="id" value="<%= rs.getInt("id") %>">
-            <button type="submit" name="action" value="approve">Approve</button>
-            <button type="submit" name="action" value="reject">Reject</button>
-        </form>
-    </td>
-</tr>
-
+        <tr>
+            <td><%= rs.getString("proposer_name") %></td>
+            <td><%= rs.getString("event_name") %></td>
+            <td><%= rs.getString("event_description") %></td>
+            <td><%= rs.getString("venue") %></td>
+            <td><%= rs.getString("event_date") %></td>
+            <td><%= rs.getString("from_time") %></td>
+            <td><%= rs.getString("to_time") %></td>
+            <td><%= rs.getInt("approved_by_faculty") == 0 ? "Not Approved" : "Approved" %></td>
+            <td><%= rs.getInt("approved_by_dean") == 0 ? "Not Approved" : "Approved" %></td>
+            <td><%= rs.getInt("approved_by_head_of_student_council") == 0 ? "Not Approved" : "Approved" %></td>
+            <td class="button-column">
+                <form action="ApprovalServlet" method="post">
+                    <input type="hidden" name="event_id" value="<%= rs.getInt("event_id") %>">
+                    <button type="submit" name="action" value="approve">Approve</button>
+                    <button type="submit" name="action" value="reject">Reject</button>
+                </form>
+            </td>
+        </tr>
         <% 
                 }
-            } catch (SQLException e) {
+            } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
             } finally {
                 try {

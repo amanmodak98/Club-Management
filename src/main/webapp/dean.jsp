@@ -4,22 +4,27 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style>/* Global Styles */
+<title>Dean</title>
+<style>
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #87CEEB; /* Light sky blue background */
 }
 
 .header {
-    background-color: #333;
-    color: #fff;
+    background-color: #fff; /* White header background */
+    color: #333; /* Dark text color */
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 150px;
+    width: 98%;
+    margin-right: 5px;
 }
 
 .menu {
@@ -37,14 +42,20 @@ body {
     left: -200px;
     transition: left 0.3s ease;
     padding-top: 60px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar a {
     display: block;
     color: #fff;
     text-decoration: none;
-    padding: 10px;
+    padding: 20px;
     transition: background-color 0.3s ease;
+    border-bottom: 1px solid #555; /* Add border to separate links */
+}
+
+.sidebar a:last-child {
+    border-bottom: none; /* Remove border from last link */
 }
 
 .sidebar a:hover {
@@ -66,32 +77,79 @@ body {
 }
 
 .button button {
-    padding: 10px 20px;
-    margin: 5px;
+    padding: 20px 40px;
+    margin: 10px;
     border: none;
-    background-color: #333;
+    background-color: #007bff; /* Dark blue button color */
     color: #fff;
     cursor: pointer;
+    border-radius: 10px;
     transition: background-color 0.3s ease;
+    width: 250px;
+    height: 250px;
 }
 
 .button button:hover {
-    background-color: #555;
+    background-color: #0056b3;
 }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Your CSS styles */
-    </style>
+
+/* Hover effect on buttons */
+.button button:hover {
+    transform: translateY(-2px);
+}
+
+/* Additional styles for header */
+#heading {
+    font-size: 36px; /* Larger text size for the header */
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #666 transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 4px;
+}
+
+h1 {
+    font-size: 50px; /* Set the font size */
+    color: #333; /* Set the text color */
+    margin: 10px 0; /* Set the top and bottom margin */
+    /* You can add more styles as needed, such as font-family, font-weight, etc. */
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.menu{
+font-size: 50px;
+margin-right: 10px;
+}
+
+
+#logo {
+    max-width: 510.6px; /* Adjust the width of the logo as needed */
+    height: 148px;
+    margin-left: 5px;
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</style>
 </head>
 <body>
 
-    <div class="header">
-        <h1 id="heading">Rit Roorkee</h1>
-        <div class="menu" onclick="toggleMenu()">☰</div>
-    </div>
+<div class="header">
+    <img id="logo" alt="" src="https://ritroorkee.com/wp-content/uploads/2024/01/RIT-NAAC-LOGO-1.pdf-1.png">
+    <h1>The first college in North India to be awarded NAAC A++</h1>
+    <div class="menu" onclick="toggleMenu()">=</div>
+</div>
 
     <div class="sidebar" id="sidebar">
         <a href="#" onclick="showContent('calendar')"><i class="fas fa-calendar-alt"></i> Calendar</a>
