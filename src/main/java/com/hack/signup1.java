@@ -55,7 +55,7 @@ public class signup1 extends HttpServlet {
                 int i = insertStmt.executeUpdate();
 
                 if (i > 0) {
-                    RequestDispatcher rd = request.getRequestDispatcher("signup.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher("signup.html");
                     rd.forward(request, response);
                 } else {
                     System.out.println("Welcome");

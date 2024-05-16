@@ -21,7 +21,7 @@ public class event extends HttpServlet {
                 	response.sendRedirect(request.getContextPath() + "/addeventredirect");
                     break;
                 case "check status":
-                	response.sendRedirect(request.getContextPath() + "/fetch");
+                	response.sendRedirect(request.getContextPath() + "/checkStatus");
                     break;
                 case "drop events":
                     response.sendRedirect("dropEvent.html");

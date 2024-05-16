@@ -129,4 +129,14 @@
     <servlet-name>newsletter</servlet-name>
     <url-pattern>/newsletter</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>checkStatus</display-name>
+    <servlet-name>checkStatus</servlet-name>
+    <servlet-class>com.hack.checkStatus</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>checkStatus</servlet-name>
+    <url-pattern>/checkStatus</url-pattern>
+  </servlet-mapping>
 </web-app>
